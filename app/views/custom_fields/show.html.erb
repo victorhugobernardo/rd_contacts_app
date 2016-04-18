@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Campo:</strong>
+  <%= @custom_field.field %>
+</p>
+
+<p>
+  <strong>Tipo de Campo:</strong>
+  <%= @custom_field.field_type %>
+</p>
+
+<%= link_to 'Editar', edit_custom_field_path(@custom_field) %> |
+<%= link_to 'Voltar', custom_fields_path %>

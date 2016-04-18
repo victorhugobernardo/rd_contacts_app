@@ -1,0 +1,38 @@
+﻿<p id="notice"><%= notice %></p>
+
+<h1>Lista de Campos Customizados</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Campo</th>
+      <th>Tipo de Campo</th>
+      <th>Usuário Dono dos Canpos</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @custom_fields.each do |custom_field| %>
+      <tr>
+        <td><%= custom_field.field %></td>
+        <td><%= custom_field.field_type %></td>
+        <td><%= custom_field.usr.name %></td>
+        <td><%= link_to 'Consultar', custom_field %></td>
+		
+		<% if current_usr.id == custom_field.usr_id%>
+			<td><%= link_to 'Editar', edit_custom_field_path(custom_field) %></td>
+		<% else %>
+			<td><%= "Editar" %></td>
+		<% end %>
+		
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Incluir Campo Customizado', new_custom_field_path %>
+<td> | </td>
+<td><%= link_to 'Lista Contatos', contacts_path %></td> 

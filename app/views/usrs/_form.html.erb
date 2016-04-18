@@ -1,0 +1,33 @@
+﻿<%= form_for(@usr) do |f| %>
+  <% if @usr.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@usr.errors.count, "error") %> prohibited this usr from being saved:</h2>
+
+      <ul>
+      <% @usr.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label "Nome" %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label "Login" %><br>
+    <%= f.text_field :login %>
+  </div>
+  <div class="field">
+    <%= f.label "Senha" %><br>
+    <%= f.password_field :password %>
+  </div>
+  <div class="field">
+    <%= f.label "Confirmação Senha" %><br>
+    <%= f.password_field :password_confirmation %>
+  </div>  
+  <div class="actions">
+    <%= f.submit " OK "%>
+  </div>
+<% end %>

@@ -1,0 +1,25 @@
+<%= form_for(@custom_field) do |f| %>
+  <% if @custom_field.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@custom_field.errors.count, "error") %> prohibited this custom_field from being saved:</h2>
+
+      <ul>
+      <% @custom_field.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label "Campo" %><br>
+    <%= f.text_field :field %>
+  </div>
+  <div class="field">
+    <%= f.label "Tipo de Campo" %><br>
+    <%= f.number_field :field_type %>
+  </div>
+  <div class="actions">
+    <%= f.submit " OK "%>
+  </div>
+<% end %>
