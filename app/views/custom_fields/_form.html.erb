@@ -1,4 +1,4 @@
-<%= form_for(@custom_field) do |f| %>
+﻿<%= form_for(@custom_field) do |f| %>
   <% if @custom_field.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@custom_field.errors.count, "error") %> prohibited this custom_field from being saved:</h2>
@@ -15,9 +15,18 @@
     <%= f.label "Campo" %><br>
     <%= f.text_field :field %>
   </div>
+  
   <div class="field">
     <%= f.label "Tipo de Campo" %><br>
-    <%= f.number_field :field_type %>
+	<select name="custom_field[field_type]" id="custom_field_field_type">
+	<% if @custom_field.field_type == 1 %>
+		<option value="1" selected="true">Campo Texto (até 20 caracteres)</option>
+		<option value="2">Campo Texto (até 100 caracteres)</option>
+	  <% else %>
+		<option value="1">Campo Texto (até 20 caracteres)</option>
+		<option value="2" selected="true">Campo Texto (até 100 caracteres)</option>	  
+	  <% end%>
+	</select>	
   </div>
   <div class="actions">
     <%= f.submit " OK "%>
