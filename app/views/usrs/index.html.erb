@@ -20,8 +20,14 @@
         <td align="center"><%= usr.login %></td>
 		<td align="center"><%= pluralize(usr.custom_field.size, "custom_field") %></td>
 		<td align="center"><%= pluralize(usr.contact.size, "contact") %></td>
-        <td align="center"><%= link_to 'Visualizar', usr %></td>
-        <td align="center"><%= link_to 'Editar', edit_usr_path(usr) %></td>
+        <td align="center"><%= link_to 'Consultar', usr %></td>
+		
+		<% if current_usr.id == usr.id || (current_usr.login == "admin") %>
+			<td align="center"><%= link_to 'Editar', edit_usr_path(usr) %></td>
+		<% else %>
+			<td><%= "Editar" %></td>
+		<% end %>
+		
       </tr>
     <% end %>
   </tbody>
@@ -30,3 +36,9 @@
 <br>
 
 <%= link_to 'Incluir Usuário', new_usr_path %>
+<td> | </td>
+<td><%= link_to 'Lista Contatos', contacts_path %></td> 
+<td> | </td> 
+<td><%= link_to 'Lista Campos Customizados', custom_fields_path %></td> 
+<td> | </td> 
+<td><%= link_to 'Sair', root_path %></td>

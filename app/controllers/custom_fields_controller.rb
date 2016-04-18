@@ -1,6 +1,6 @@
 ﻿class CustomFieldsController < ApplicationController
   
-  before_filter :authorized_usr, only: [:new, :create]
+  before_filter :authorized_usr
   before_action :set_custom_field, only: [:show, :edit, :update, :destroy]
 
   # GET /custom_fields
@@ -26,11 +26,9 @@
   # POST /custom_fields
   # POST /custom_fields.json
   def create
-  	usr = Usr.find_by(params[:usr_id])
-
 	@custom_field = CustomField.new(custom_field_params)
-	@custom_field.usr_id = usr.id
-
+	@custom_field.usr_id = session[:usr_id].to_i
+ 
 	respond_to do |format|
 	  if @custom_field.save
 		format.html { redirect_to @custom_field, notice: 'Custom field was successfully created.' }

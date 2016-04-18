@@ -15,10 +15,16 @@
     <%= f.label "Nome" %><br>
     <%= f.text_field :name %>
   </div>
-  <div class="field">
-    <%= f.label "Login" %><br>
-    <%= f.text_field :login %>
-  </div>
+  
+  <% puts "$$$$$$$$$$$$$$$$$$$$$$$$" + @usr.id.to_s %>
+  <% if @usr.id %>
+  <% else %>
+	  <div class="field">
+	    <%= f.label "Login" %><br>
+	    <%= f.text_field :login %>
+	  </div>  
+  <% end %>
+  
   <div class="field">
     <%= f.label "Senha" %><br>
     <%= f.password_field :password %>

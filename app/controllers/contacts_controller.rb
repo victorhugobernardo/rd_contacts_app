@@ -26,10 +26,8 @@
   # POST /contacts
   # POST /contacts.json
   def create
-  	usr = Usr.find_by(params[:usr_id])
-
 	@contact = Contact.new(contact_params)
-	@contact.usr_id = usr.id  
+	@contact.usr_id = session[:usr_id].to_i 
     
     respond_to do |format|
       if @contact.save

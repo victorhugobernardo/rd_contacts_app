@@ -1,4 +1,6 @@
-class UsrsController < ApplicationController
+﻿class UsrsController < ApplicationController
+
+  before_filter :authorized_usr
   before_action :set_usr, only: [:show, :edit, :update, :destroy]
 
   # GET /usrs
@@ -71,4 +73,10 @@ class UsrsController < ApplicationController
     def usr_params
       params.require(:usr).permit(:name, :login, :password, :password_confirmation)
     end
+	
+	def authorized_usr
+		unless current_usr
+			redirect_to root_path, alert: "Você precisa se autenticar"
+		end
+	end	
 end

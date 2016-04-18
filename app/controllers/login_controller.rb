@@ -1,6 +1,7 @@
 ﻿class LoginController < ActionController::Base
 
 	def new
+		session.clear
 	end
 	
 	def create
